@@ -3,18 +3,17 @@ package application;
 import entities.Board;
 import entities.pieces.Pawn;
 import entities.pieces.Piece;
-import exceptions.MovementNotAllowedException;
 
 import java.util.LinkedList;
+import java.util.Optional;
 
-import static application.Program.askPos;
 
 public class Main {
     public static void main(String[] args) {
 
         LinkedList<Piece> pieces = new LinkedList<>();
         Piece pieceToMove = null;
-        Piece pieceCaptured = null;
+        Optional<Piece> pieceCaptured;
         for(int i = 1; i <= 8; i++)
         {
             pieces.add(new Pawn(i,2));
@@ -38,7 +37,11 @@ public class Main {
             if(pieceToMove instanceof Pawn)
             {
                 Pawn pawn = (Pawn) pieceToMove;
-
+                pieceCaptured = board.isPieceCaptured(pos[0], pos[1]);
+                if(!pieceCaptured.isEmpty())
+                {
+                    pawn.capture(pieceCaptured.get());
+                }
             }
 
             pieceToMove.move(pos[0], pos[1]);

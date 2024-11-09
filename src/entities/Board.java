@@ -3,6 +3,7 @@ package entities;
 import entities.pieces.Piece;
 
 import java.util.LinkedList;
+import java.util.Optional;
 
 public class Board {
 
@@ -16,8 +17,8 @@ public class Board {
         return pieces;
     }
 
-    public Piece isPieceCaptured(int x, int y)
+    public Optional<Piece> isPieceCaptured(int x, int y)
     {
-        return this.getPieces().stream().filter(piece -> )
+        return this.getPieces().stream().filter(piece -> piece.getX() == x && piece.getY() == y).findFirst();
     }
 }

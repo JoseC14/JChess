@@ -22,7 +22,7 @@ public class Program {
                 hasPieceInPos = false;
                 for(Piece piece : board.getPieces())
                 {
-                    if(piece.getX() == x && piece.getY() == y)
+                    if(piece.getX() == x && piece.getY() == y && !piece.getCaptured())
                     {
                         System.out.print("p ");
                         hasPieceInPos = true;

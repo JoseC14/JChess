@@ -23,7 +23,7 @@ public class Pawn extends Piece{
     @Override
     public void move(int posX, int posY) throws MovementNotAllowedException
     {
-        if(posX > 0 || posY < this.getY())
+        if(posX != getX() || posY < this.getY())
         {
             throw new MovementNotAllowedException("Movemento do Peão não permitido");
         }
